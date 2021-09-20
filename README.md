@@ -1,2 +1,2 @@
-* playing with asynchronous redux
-* using redux connect() function to connect to store
+* using redux thunk middleware to apply async calls to store
+* using redux connect() function
