@@ -15,17 +15,19 @@ export const themeReducer = (state = initialState, action) => {
   }
 };
 
-export const characterReducer = (state = {}, action) => {
+export const character = (state = {}, action) => {
+  let status = {}
   switch (action.type){
-    case 'fetch': 
-      return {
-        ...state,
-        character: action.data[0],
-      }
+    case 'fetchStart':
+        status = {fetching: true};
+        return {...state, ...status};
+    case 'fetchSuccess': 
+     status = {fetching: false};
+     return {...state, character: action.data[0], ...status};
     ;
     default: return state;
   }
 }
 
-export default combineReducers({theme: themeReducer, character: characterReducer});
+export default combineReducers({ theme: themeReducer, character });
 

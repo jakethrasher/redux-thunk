@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Button from './Button';
 import { fetchACharacter } from '../app/actions';
 import ListItem from './ListItem';
 import themeSelector from '../app/selectors';
+
 const mapStateToProps = (state, props) => {
   return ({
     theme: themeSelector(state),
-    character: state.character.character,
   });
 };
 
@@ -18,11 +18,8 @@ const mapDispatchToProps = (dispatch, props) => {
 };
 
 const List = (props) => {
-  const [fetched, setFetched] = useState(false);
-
   const handleFetchCharacter = async () =>{
     await props.fetchCharacter();
-    setFetched(true);
   }
     return (
       <div style = {{
@@ -31,7 +28,7 @@ const List = (props) => {
         height: '100vh',
       }}>
         <Button text='Get Character' onClick={handleFetchCharacter}/>
-        {fetched && <ListItem character={props.character}/>}
+        <ListItem />
       </div>
     )
 };

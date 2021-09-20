@@ -10,8 +10,9 @@ export function getCharacter(){
 //thunk
 export const fetchACharacter = () =>{
   return (dispatch) => {
+    dispatch({type:'fetchStart'});
     return getCharacter()
       .then(res => res.json())
-      .then(data=>dispatch({type:'fetch', data:data}))
+      .then(data=>dispatch({type:'fetchSuccess', data:data}))
   }
 }
