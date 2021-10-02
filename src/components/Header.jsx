@@ -21,8 +21,6 @@ const Header = (props) => {
   return(
       <div style={{color:props.theme.color, backgroundColor: props.theme.backgroundColor}}>
         <Button text='Toggle Theme' onClick={props.toggleTheme}/>
-        <Button text='Test'/>
-        <p>ignore the button that says test</p>
       </div>
   )
 };
